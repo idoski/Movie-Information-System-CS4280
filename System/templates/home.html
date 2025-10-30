@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<body style="background-color:AntiqueWhite;">
+<head>
+    <title>Movie information System</title>
+</head>
+<body>
+    <h1>Welcome to the Movie Information System</h1>
+    <div class="topnav">
+        <a class="active" href="">Home</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+        <input type="text" placeholder="Search Movies..">
+    </div>
+    <div>
+        <h2>Featured Movies</h2>
+        <ul>
+            <a href="/1"><img src="{{url_for('static', filename='blackpanther.jpg')}}"height="200" width="200" alt="Movie Image"></a>
+            <a href="/2"><img src="{{url_for('static', filename='harrypotter.jpg')}}"height="200" width="200" alt="Movie Image"></a>
+            <a href="/2"><img src="{{url_for('static', filename='boys.jpg')}}"height="200" width="200" alt="Movie Image"></a>
+        </ul>
+    </div>
+        <div>
+        <h2>Featured Actors</h2>
+        <ul>
+            <a href="/1"><img src="{{url_for('static', filename='ben.jpg')}}"height="200" width="200" alt="Movie Image"></a>
+            <a href="/2"><img src="{{url_for('static', filename='dwayne.jpg')}}"height="200" width="200" alt="Movie Image"></a>
+            <a href="/2"><img src="{{url_for('static', filename='robert.jpg')}}"height="200" width="200" alt="Movie Image"></a>
+        </ul>
+    </div>
+</body>
+</html>
