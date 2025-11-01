@@ -14,3 +14,7 @@ def movie_info(movieid):
 @app.route("/", methods=["GET"])
 def home():
     return render_template('home.html')
+
+@app.route("/home", methods=["GET"])
+def home_redirect():
+    return redirect(url_for('home'))

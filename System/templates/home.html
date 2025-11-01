@@ -1,17 +1,25 @@
 <!DOCTYPE html>
+<!-- Main page document, loads from both "/" and "/home"-->
+<!-- Uses homestyle.css-->
 <html lang="en">
-<body style="background-color:AntiqueWhite;">
 <head>
+    <!-- Defines all the meta stuff for HTML-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homestyle.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Movie information System</title>
 </head>
-<body>
-    <h1>Welcome to the Movie Information System</h1>
-    <div class="topnav">
+<body style="background-color:AntiqueWhite;">
+    <!-- Nav Bar, make sure this is on every page.-->
+    <nav class="topnav">
+        <p>Movie Information System</p>
         <a class="active" href="">Home</a>
         <a href="about">About</a>
         <a href="contact">Contact</a>
         <input type="text" placeholder="Search Movies..">
-    </div>
+    </nav>
+
+    <!-- Split sections of the system, featured movies, actors, etc-->
     <div>
         <h2>Featured Movies</h2>
         <ul>
@@ -20,6 +28,7 @@
             <a href="/2"><img src="{{url_for('static', filename='boys.jpg')}}"height="200" width="200" alt="Movie Image"></a>
         </ul>
     </div>
+
         <div>
         <h2>Featured Actors</h2>
         <ul>
@@ -28,5 +37,6 @@
             <a href="/2"><img src="{{url_for('static', filename='robert.jpg')}}"height="200" width="200" alt="Movie Image"></a>
         </ul>
     </div>
+
 </body>
 </html>

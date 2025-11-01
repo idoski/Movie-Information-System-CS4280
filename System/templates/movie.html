@@ -1,12 +1,33 @@
 <!DOCTYPE html>
+<!-- Movie information page, loads from "/<movieid>"-->
+<!-- Uses search.css-->
 <html lang="en">
 <head>
-    <title>Movie Search</title>
+    <!-- Defines all the meta stuff for HTML-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='search.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search Results</title>
 </head>
-<body>
-    <img src="{{img_path}}" height="200" width="200" alt="Movie Image">
+<body style="background-color:AntiqueWhite;">
+    <!-- Nav Bar, make sure this is on every page.-->
+    <nav class="topnav">
+        <p>Movie Information System</p>
+        <a class="home" href="home">Home</a>
+        <a href="about">About</a>
+        <a href="contact">Contact</a>
+        <input type="text" placeholder="Search Movies..">
+    </nav>
+
+    <!-- Actual loaded content, placeholder text for now, replace with variables later-->
+    <img src="{{img_path}}" alt="Movie Image">
     <h1>{{title}}</h1>
-    <p>{{description}}</p>
-    <p>{{rating}}</p>
+    <p>Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends, Ron Weasley and Hermione Granger, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's conflict with Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic, and subjugate all wizards and Muggles (non-magical people).
+The series was originally published in English by Bloomsbury in the United Kingdom and Scholastic Press in the United States. A series of many genres, including fantasy, drama, coming-of-age fiction, and the British school story (which includes elements of mystery, thriller, adventure, horror, and romance), the world of Harry Potter explores numerous themes and includes many cultural meanings and references.[1] Major themes in the series include prejudice, corruption, madness, love, and death.
+    </p>
+    <br>
+    <br>
+    <p>Rating: {{rating}}</p>
+    <p>Release Date: 2012</p>
 </body>
 </html>
