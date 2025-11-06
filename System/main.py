@@ -18,3 +18,15 @@ def home():
 @app.route("/home", methods=["GET"])
 def home_redirect():
     return redirect(url_for('home'))
+
+@app.route("/about", methods=["GET"])
+def about():
+    return render_template('about.html')
+
+@app.route("/contact", methods=["GET"])
+def contact():
+    return render_template('contact.html')
+
+@app.route("/list", methods=["GET"])
+def list_movies():
+    return render_template('list.html')
