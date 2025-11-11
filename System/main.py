@@ -28,19 +28,19 @@ def movie_info(movieid):
     return render_template('movie.html', name=name, img_path=img_path, rating=rating, release_date=release_date, director=director, cast=cast, genre=genre, runtime=runtime)
 
 
-@app.route("/", methods=["GET"])
+@app.route("/", methods=["GET", "POST"])
 def home():
-    featured_movies = list(db.Movies.aggregate([{"$sample": {"size": 8}}]))
-    return render_template('home.html', featured_movies=featured_movies)
-
-@app.route("/", methods=["POST"])
-def home_search():
-    q = request.form.get("query")
-    query = db.Movies.find({}, {"Name": {"$regex": q, "$options": "i"}})
-    objID = query[0]['_id'].__str__()
-    print(query)
-    print(objID)
-    return redirect(url_for('movie_info', movieid=objID))
+    if request.method == "POST":
+        q = request.form.get('query').__str__()
+        query = db.Movies.find_one({"Name": {"$regex": q, "$options": "i"}})
+        if query is None:
+            return redirect(url_for('home'))
+        objID = query["_id"].__str__()
+        return redirect(url_for('movie_info', movieid=objID))
+    else:
+        top_movies = list(db.Movies.find().sort("Rating", -1).limit(8))
+        featured_movies = list(db.Movies.aggregate([{"$sample": {"size": 8}}]))
+        return render_template('home.html', featured_movies=featured_movies, top_movies=top_movies)
     
     
 
@@ -63,6 +63,3 @@ def list_movies():
     for movie in db_movies:
         movies.append(movie)
     return render_template('list.html', movies=movies)
-
-if __name__ == "__main__":
-    app.run(debug=True)

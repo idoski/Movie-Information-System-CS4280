@@ -30,7 +30,7 @@
             <span class="navtext">All Movies</span>
         </a>
         <form method="POST">
-            <input type="search" placeholder="Search Movies..">
+            <input type="search" placeholder="Search Movies.." name="query">
         </form>
     </nav>
 
@@ -56,6 +56,13 @@
     </div>
     </main>
 
+    <div class = "top-movies">
+        <h2>Top Movies</h2>
+        <ul>
+            {% for movie in top_movies %}
+                <a href="/{{ movie._id.__str__() }}"><img src="{{ url_for('static', filename=movie.Name.replace(':', ' -') + '.webp') }}"height="200" width="130" alt="Movie Image"></a>
+            {% endfor %}
+        </ul>
 
 </body>
 </html>
