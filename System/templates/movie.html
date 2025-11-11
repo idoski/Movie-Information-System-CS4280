@@ -29,18 +29,27 @@
             <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M280-600v-80h560v80H280Zm0 160v-80h560v80H280Zm0 160v-80h560v80H280ZM160-600q-17 0-28.5-11.5T120-640q0-17 11.5-28.5T160-680q17 0 28.5 11.5T200-640q0 17-11.5 28.5T160-600Zm0 160q-17 0-28.5-11.5T120-480q0-17 11.5-28.5T160-520q17 0 28.5 11.5T200-480q0 17-11.5 28.5T160-440Zm0 160q-17 0-28.5-11.5T120-320q0-17 11.5-28.5T160-360q17 0 28.5 11.5T200-320q0 17-11.5 28.5T160-280Z"/></svg></span>
             <span class="navtext">All Movies</span>
         </a>
-        <input type="text" placeholder="Search Movies..">
+        <form method="POST">
+            <input type="search" placeholder="Search Movies..">
+        </form>
     </nav>
 
-    <!-- Actual loaded content, placeholder text for now, replace with variables later-->
+    <div class="movie-info">
+    <!-- Actual loaded content-->
     <img src="{{img_path}}" alt="Movie Image">
-    <h1>{{title}}</h1>
+    <h1>{{name}}</h1>
     <p>Harry Potter is a series of seven fantasy novels written by British author J. K. Rowling. The novels chronicle the lives of a young wizard, Harry Potter, and his friends, Ron Weasley and Hermione Granger, all of whom are students at Hogwarts School of Witchcraft and Wizardry. The main story arc concerns Harry's conflict with Lord Voldemort, a dark wizard who intends to become immortal, overthrow the wizard governing body known as the Ministry of Magic, and subjugate all wizards and Muggles (non-magical people).
 The series was originally published in English by Bloomsbury in the United Kingdom and Scholastic Press in the United States. A series of many genres, including fantasy, drama, coming-of-age fiction, and the British school story (which includes elements of mystery, thriller, adventure, horror, and romance), the world of Harry Potter explores numerous themes and includes many cultural meanings and references.[1] Major themes in the series include prejudice, corruption, madness, love, and death.
     </p>
     <br>
     <br>
     <p>Rating: {{rating}}</p>
-    <p>Release Date: 2012</p>
+    <p>Release Date: {{release_date}}</p>
+    <p>Director: {{director}}</p>
+    <p>Cast: {{cast}}</p>
+    <p>Genre: {{genre}}</p>
+    <p>Runtime (minutes): {{runtime}}</p>
+    </div>
+
 </body>
 </html>

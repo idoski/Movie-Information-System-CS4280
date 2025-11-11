@@ -37,7 +37,14 @@ nav.topnav a:hover {
     color: black;
 }
 
-nav.topnav input[type="text"] {
+nav.topnav form {
+    float: right;
+    margin-right: 10px;
+    position: relative;
+    top: 10px;
+}
+
+nav.topnav input[type="search"] {
     float: right;
     padding: 6px;
     margin: 8px;
@@ -60,3 +67,18 @@ nav.topnav input[type="text"] {
     position: relative;
     bottom: -7px;
 }  
+
+.horizontal-list li {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.horizontal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.featured-movies img {
+    margin-right: 20px;
+}

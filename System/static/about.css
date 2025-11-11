@@ -44,7 +44,14 @@ nav.topnav a:hover {
     color: black;
 }
 
-nav.topnav input[type="text"] {
+nav.topnav form {
+    float: right;
+    margin-right: 10px;
+    position: relative;
+    top: 10px;
+}
+
+nav.topnav input[type="search"] {
     float: right;
     padding: 6px;
     margin: 8px;
