@@ -81,7 +81,7 @@ def contact():
 # Movie and Actor Lists
 @app.route("/mlist", methods=["GET"])
 def list_movies():
-    db_movies = db.Movies.find()
+    db_movies = db.Movies.find().sort("Name", 1)
     movies = []
     for movie in db_movies:
         movies.append(movie)
@@ -89,7 +89,7 @@ def list_movies():
 
 @app.route("/alist", methods=["GET"])
 def list_actors():
-    db_actors = db.Actors.find()
+    db_actors = db.Actors.find().sort("Name", 1)
     actors = []
     for actor in db_actors:
         actors.append(actor)
