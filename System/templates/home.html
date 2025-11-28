@@ -61,10 +61,10 @@
     </main>
 
     <div class = "top-movies">
-        <h2>Top Movies</h2>
+        <h2>Newest Movies</h2>
         <ul>
-            {% for movie in top_movies %}
-                <a href="/{{ movie._id.__str__() }}"><img src="{{ url_for('static', filename=movie.Name.replace(':', ' -') + '.webp') }}"height="200" width="130" alt="Movie Image"></a>
+            {% for movie in newest_movies %}
+                <a href="/m_{{ movie._id.__str__() }}"><img src="{{ url_for('static', filename=movie.Name.replace(':', ' -') + '.webp') }}"height="200" width="130" alt="Movie Image"></a>
             {% endfor %}
         </ul>
     </div>

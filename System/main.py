@@ -57,10 +57,10 @@ def home():
         objID = query["_id"].__str__()
         return redirect(url_for('movie_info', movieid=objID))
     else:
-        top_movies = list(db.Movies.find().sort("Rating", -1).limit(8))
+        newest_movies = list(db.Movies.find().sort("release_date", -1).limit(5))
         featured_movies = list(db.Movies.aggregate([{"$sample": {"size": 8}}]))
         featured_actors = list(db.Actors.aggregate([{"$sample": {"size": 6}}]))
-        return render_template('home.html', featured_movies=featured_movies, top_movies=top_movies, featured_actors=featured_actors)
+        return render_template('home.html', featured_movies=featured_movies, newest_movies=newest_movies, featured_actors=featured_actors)
     
 
 
@@ -70,27 +70,58 @@ def home_redirect():
     return redirect(url_for('home'))
 
 # About and Contact pages
-@app.route("/about", methods=["GET"])
+@app.route("/about", methods=["GET","POST"])
 def about():
-    return render_template('about.html')
+     if request.method == "POST":
+            q = request.form.get('query').__str__()
+            query = db.Movies.find_one({"Name": {"$regex": q, "$options": "i"}})
+            if query is None:
+                return redirect(url_for('home'))
+            objID = query["_id"].__str__()
+            return redirect(url_for('movie_info', movieid=objID))
+     else:
+        return render_template('about.html')
 
-@app.route("/contact", methods=["GET"])
+@app.route("/contact", methods=["GET","POST"])
 def contact():
-    return render_template('contact.html')
-
+    if request.method == "POST":
+        q = request.form.get('query').__str__()
+        query = db.Movies.find_one({"Name": {"$regex": q, "$options": "i"}})
+        if query is None:
+            return redirect(url_for('home'))
+        objID = query["_id"].__str__()
+        return redirect(url_for('movie_info', movieid=objID))
+    else:
+        return render_template('contact.html')
 # Movie and Actor Lists
-@app.route("/mlist", methods=["GET"])
+@app.route("/mlist", methods=["GET","POST"])
 def list_movies():
-    db_movies = db.Movies.find().sort("Name", 1)
-    movies = []
-    for movie in db_movies:
-        movies.append(movie)
-    return render_template('list.html', movies=movies)
+    if request.method == "POST":
+        q = request.form.get('query').__str__()
+        query = db.Movies.find_one({"Name": {"$regex": q, "$options": "i"}})
+        if query is None:
+            return redirect(url_for('home'))
+        objID = query["_id"].__str__()
+        return redirect(url_for('movie_info', movieid=objID))
+    else:
+        db_movies = db.Movies.find().sort("Name", 1)
+        movies = []
+        for movie in db_movies:
+            movies.append(movie)
+        return render_template('list.html', movies=movies)
 
-@app.route("/alist", methods=["GET"])
+@app.route("/alist", methods=["GET","POST"])
 def list_actors():
-    db_actors = db.Actors.find().sort("Name", 1)
-    actors = []
-    for actor in db_actors:
-        actors.append(actor)
+    if request.method == "POST":
+        q = request.form.get('query').__str__()
+        query = db.Movies.find_one({"Name": {"$regex": q, "$options": "i"}})
+        if query is None:
+            return redirect(url_for('home'))
+        objID = query["_id"].__str__()
+        return redirect(url_for('movie_info', movieid=objID))
+    else:
+        db_actors = db.Actors.find().sort("Name", 1)
+        actors = []
+        for actor in db_actors:
+            actors.append(actor)
     return render_template('actor_list.html', actors=actors)
