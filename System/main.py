@@ -127,4 +127,4 @@ def list_actors():
     return render_template('actor_list.html', actors=actors)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
