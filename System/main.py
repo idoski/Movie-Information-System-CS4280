@@ -125,6 +125,3 @@ def list_actors():
         for actor in db_actors:
             actors.append(actor)
     return render_template('actor_list.html', actors=actors)
-
-if __name__ == "__main__":
-    app.run()
